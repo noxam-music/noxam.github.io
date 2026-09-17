@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NoxAm — Archive</title>
+    <title>NoxAm — Digital Archive</title>
 
     <style>
         * {
@@ -42,6 +42,7 @@
             font-weight: 700;
             letter-spacing: 5px;
             color: #72c9c4;
+            text-decoration: none;
         }
 
         nav a {
@@ -58,13 +59,24 @@
 
         main {
             flex: 1;
+            padding: 70px 7vw;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Двухколоночный блок первого экрана */
+        .hero {
             display: flex;
             align-items: center;
-            padding: 80px 7vw;
+            justify-content: space-between;
+            gap: 50px;
+            min-height: 58vh;
         }
 
         .intro {
-            max-width: 760px;
+            flex: 1.2;
+            max-width: 650px;
         }
 
         .classification {
@@ -77,7 +89,7 @@
 
         h1 {
             margin: 0 0 24px 0;
-            font-size: clamp(52px, 9vw, 110px);
+            font-size: clamp(52px, 8vw, 100px);
             line-height: 0.9;
             font-weight: 700;
             letter-spacing: -4px;
@@ -85,7 +97,6 @@
         }
 
         .description {
-            max-width: 600px;
             font-size: 18px;
             line-height: 1.7;
             color: #9eb0af;
@@ -94,19 +105,133 @@
         .archive-link {
             display: inline-block;
             margin-top: 36px;
-            padding: 14px 22px;
+            padding: 14px 24px;
             border: 1px solid #3b8f8b;
             color: #72c9c4;
             text-decoration: none;
             font-size: 13px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            transition: 0.2s;
+            transition: all 0.2s ease;
         }
 
         .archive-link:hover {
             background: #72c9c4;
             color: #071315;
+        }
+
+        /* Правая колонка с крупным логотипом */
+        .hero-visual {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-logo {
+            width: 100%;
+            max-width: 380px;
+            height: auto;
+            opacity: 0.22; /* полупрозрачный, стильный вид */
+            filter: drop-shadow(0 0 35px rgba(114, 201, 196, 0.15));
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* Блок Свежего релиза */
+        .latest-section {
+            margin-top: 70px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(74, 180, 177, 0.15);
+        }
+
+        .section-label {
+            color: #e5a84b;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .latest-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+            background: rgba(74, 180, 177, 0.04);
+            border: 1px solid rgba(74, 180, 177, 0.18);
+            border-radius: 6px;
+            padding: 24px;
+            flex-wrap: wrap;
+        }
+
+        .latest-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .latest-thumb {
+            width: 72px;
+            height: 72px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid rgba(74, 180, 177, 0.25);
+            flex-shrink: 0;
+        }
+
+        .latest-meta h3 {
+            margin: 0 0 6px 0;
+            font-size: 20px;
+            color: #e4eeee;
+            font-weight: 500;
+        }
+
+        .latest-meta p {
+            margin: 0;
+            color: #8b9f9e;
+            font-size: 13px;
+        }
+
+        .latest-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .btn-page {
+            color: #72c9c4;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            padding: 10px 18px;
+            border: 1px solid rgba(114, 201, 196, 0.3);
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-page:hover {
+            border-color: #e5a84b;
+            color: #e5a84b;
+        }
+
+        .btn-ytm {
+            background: rgba(229, 168, 75, 0.12);
+            color: #e5a84b;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            padding: 10px 18px;
+            border-radius: 4px;
+            border: 1px solid rgba(229, 168, 75, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-ytm:hover {
+            background: #e5a84b;
+            color: #071315;
+            font-weight: 500;
         }
 
         footer {
@@ -116,6 +241,35 @@
             font-size: 12px;
             display: flex;
             justify-content: space-between;
+        }
+
+        @media (max-width: 850px) {
+            .hero {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                gap: 30px;
+                min-height: auto;
+            }
+
+            .hero-visual {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .hero-logo {
+                max-width: 220px;
+                opacity: 0.18;
+            }
+
+            .latest-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .latest-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
         }
 
         @media (max-width: 700px) {
@@ -129,11 +283,13 @@
             }
 
             main {
-                padding: 60px 6vw;
+                padding: 50px 6vw;
             }
 
             footer {
                 padding: 18px 6vw;
+                flex-direction: column;
+                gap: 12px;
             }
         }
     </style>
@@ -144,33 +300,64 @@
 <div class="page">
 
     <header>
-        <div class="logo">NOXAM</div>
+        <a class="logo" href="index.html">NOXAM</a>
 
         <nav>
-            <a href="#">ARCHIVE</a>
+            <a href="archive.html">ARCHIVE</a>
             <a href="#">ABOUT</a>
         </nav>
     </header>
 
     <main>
-        <section class="intro">
+        <!-- ПЕРВЫЙ ЭКРАН: ТЕКСТ СЛЕВА, ЛОГОТИП СПРАВА -->
+        <section class="hero">
+            <div class="intro">
+                <div class="classification">
+                    Digital Archive / Original Music
+                </div>
 
-            <div class="classification">
-                Digital Archive / Original Music
+                <h1>NoxAm</h1>
+
+                <div class="description">
+                    Музыка, тексты и следы их создания.
+                    Независимый архив оригинальных произведений
+                    на пересечении человеческого творчества и технологий.
+                </div>
+
+                <a class="archive-link" href="archive.html">
+                    Enter the archive →
+                </a>
             </div>
 
-            <h1>NoxAm</h1>
-
-            <div class="description">
-                Музыка, тексты и следы их создания.
-                Независимый архив оригинальных произведений
-                на пересечении человеческого творчества и технологий.
+            <div class="hero-visual">
+                <!-- Большой фоновый логотип (замени images/logo.webp при необходимости) -->
+                <img class="hero-logo" src="images/logo.webp" alt="NoxAm Symbol">
             </div>
+        </section>
 
-         <a class="archive-link" href="archive.html">
-                Enter the archive →
-            </a>
+        <!-- БЛОК СВЕЖЕГО РЕЛИЗА -->
+        <section class="latest-section">
+            <div class="section-label">Latest Release</div>
 
+            <div class="latest-card">
+                <div class="latest-left">
+                    <img class="latest-thumb" src="images/Obl-PianVech.webp" alt="Пьяный вечер" loading="lazy">
+                    <div class="latest-meta">
+                        <h3>Пьяный вечер</h3>
+                        <p>2026 • Original Single • Lyrics & Guitar by Roman Popov</p>
+                    </div>
+                </div>
+
+                <div class="latest-actions">
+                    <!-- Замени ссылку в href на прямой трек в YouTube Music -->
+                    <a class="btn-ytm" href="https://music.youtube.com" target="_blank" rel="noopener">
+                        YouTube Music ↗
+                    </a>
+                    <a class="btn-page" href="pyanyj-vecher.html">
+                        Страница трека →
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
 

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — NoxAm</title>
+    <link rel="icon" type="image/webp" href="images/logo.webp">
+    <meta name="description" content="О проекте NoxAm: манифест, авторская концепция и подход к созданию музыки на стыке человека и технологий.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+
+        body {
+            background: #000;
+            color: #d8e3e2;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 28px 7vw;
+            border-bottom: 1px solid rgba(74, 180, 177, 0.18);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: #72c9c4;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: #a8bdbc;
+            text-decoration: none;
+            margin-left: 28px;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #e5a84b;
+        }
+
+        main {
+            flex: 1;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 70px 7vw;
+            width: 100%;
+        }
+
+        .classification {
+            color: #e5a84b;
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0 0 40px 0;
+            font-size: clamp(40px, 7vw, 76px);
+            line-height: 1;
+            letter-spacing: -2px;
+            color: #e4eeee;
+        }
+
+        .statement {
+            font-size: clamp(19px, 2.5vw, 24px);
+            line-height: 1.5;
+            color: #e4eeee;
+            margin-bottom: 35px;
+            font-weight: 400;
+            border-left: 2px solid #72c9c4;
+            padding-left: 20px;
+        }
+
+        .manifesto p {
+            color: #a8bdbc;
+            font-size: 16px;
+            margin-bottom: 22px;
+        }
+
+        /* Блок принципов */
+        .principles {
+            margin: 45px 0;
+            display: grid;
+            gap: 18px;
+        }
+
+        .principle-item {
+            background: rgba(74, 180, 177, 0.04);
+            border: 1px solid rgba(74, 180, 177, 0.18);
+            border-radius: 6px;
+            padding: 20px 24px;
+        }
+
+        .principle-item h3 {
+            margin: 0 0 8px 0;
+            color: #e5a84b;
+            font-size: 15px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .principle-item p {
+            margin: 0;
+            color: #9eb0af;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        footer {
+            padding: 22px 7vw;
+            border-top: 1px solid rgba(74, 180, 177, 0.12);
+            color: #627473;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-author-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            color: #627473;
+            font-family: inherit;
+            font-size: 12px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-author-btn:hover {
+            color: #72c9c4;
+        }
+
+        /* Модальное окно контактов */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(6px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-window {
+            background: #060d0e;
+            border: 1px solid rgba(114, 201, 196, 0.3);
+            border-radius: 8px;
+            max-width: 420px;
+            width: 100%;
+            padding: 32px;
+            position: relative;
+            box-shadow: 0 0 35px rgba(0, 0, 0, 0.95), 0 0 20px rgba(114, 201, 196, 0.12);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            background: none;
+            border: none;
+            color: #8b9f9e;
+            font-size: 24px;
+            line-height: 1;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: #e5a84b;
+        }
+
+        .modal-tag {
+            color: #e5a84b;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .modal-window h3 {
+            margin: 0 0 14px 0;
+            color: #e4eeee;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .modal-window p {
+            color: #9eb0af;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+        }
+
+        .modal-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .modal-links a {
+            color: #72c9c4;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            padding: 10px 14px;
+            border: 1px solid rgba(114, 201, 196, 0.25);
+            border-radius: 4px;
+            background: rgba(114, 201, 196, 0.04);
+            transition: all 0.2s ease;
+        }
+
+        .modal-links a:hover {
+            background: rgba(114, 201, 196, 0.12);
+            border-color: #e5a84b;
+            color: #e5a84b;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 22px 6vw;
+            }
+
+            nav a {
+                margin-left: 14px;
+                font-size: 12px;
+            }
+
+            main {
+                padding: 50px 6vw;
+            }
+
+            footer {
+                padding: 18px 6vw;
+                flex-direction: column;
+                gap: 12px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <header>
+        <a class="logo" href="index.html">NOXAM</a>
+        <nav>
+            <a href="archive.html">ARCHIVE</a>
+            <a class="active" href="about.html">ABOUT</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="classification">Project Manifesto / Concept</div>
+        <h1>About NoxAm</h1>
+
+        <div class="statement">
+            Технологии не заменяют автора — они убирают технические барьеры между замыслом и звучанием.
+        </div>
+
+        <section class="manifesto">
+            <p>
+                Использование искусственного интеллекта в искусстве сегодня вызывает споры. Но для NoxAm нейросеть — это не «кнопка для генерации контента», а мощный ассистент и инструмент студийного продакшена.
+            </p>
+            <p>
+                В центре каждого произведения всегда остается человек: живой опыт, авторские тексты, мелодические ходы, сыгранные на гитаре партии и эмоциональный нерв. Алгоритмы берут на себя рутину и воплощение сложных аранжировок, позволяя независимой идее звучать так, как раньше было доступно только крупным студиям.
+            </p>
+
+            <div class="principles">
+                <div class="principle-item">
+                    <h3>01. Human Core</h3>
+                    <p>Смысл, драматургия, текст и живые гитарные гармонии создаются автором. ИИ не придумывает за человека то, что он чувствует.</p>
+                </div>
+
+                <div class="principle-item">
+                    <h3>02. AI Assisted</h3>
+                    <p>Нейросетевые модели привлекаются для поиска вокального тембра, расширения партитур и синтеза звучания, превращая набросок в законченное полотно.</p>
+                </div>
+
+                <div class="principle-item">
+                    <h3>03. Open Process</h3>
+                    <p>Честный подход к слушателю. Проект не скрывает методы создания и документирует следы творческого процесса в цифровом архиве.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <button class="footer-author-btn" id="openContactModal">
+            NoxAm / Roman Popov ↗
+        </button>
+        <span>Human created / AI assisted</span>
+    </footer>
+
+</div>
+
+<!-- ВСПЛЫВАЮЩЕЕ ОКНО КОНТАКТОВ -->
+<div class="modal-overlay" id="contactModal">
+    <div class="modal-window">
+        <button class="modal-close" id="closeContactModal">&times;</button>
+        <div class="modal-tag">Contact / Creator</div>
+        <h3>Роман Попов</h3>
+        <p>Автор проекта NoxAm. По вопросам сотрудничества, релизов и использования музыки:</p>
+        
+        <div class="modal-links">
+            <a href="noxam.music@gmail.com">Email: твой-email@gmail.com ↗</a>
+            <a href="https://t.me/NoxAm_music" target="_blank" rel="noopener">Telegram ↗</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const modal = document.getElementById('contactModal');
+    const openBtn = document.getElementById('openContactModal');
+    const closeBtn = document.getElementById('closeContactModal');
+
+    openBtn.addEventListener('click', () => {
+        modal.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>

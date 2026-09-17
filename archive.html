@@ -89,6 +89,29 @@
             align-items: center;
         }
 
+        /* Блок с миниатюрой и текстом трека */
+        .track-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .track-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid rgba(74, 180, 177, 0.25);
+            display: block;
+            flex-shrink: 0;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .track-thumb:hover {
+            transform: scale(1.04);
+            border-color: #e5a84b;
+        }
+
         .track-info h2 {
             margin: 0 0 8px 0;
             font-size: 24px;
@@ -142,6 +165,15 @@
                 gap: 20px;
             }
 
+            .track-left {
+                gap: 16px;
+            }
+
+            .track-thumb {
+                width: 52px;
+                height: 52px;
+            }
+
             footer {
                 padding: 18px 6vw;
                 gap: 20px;
@@ -154,18 +186,14 @@
 <body>
 
 <header>
-
     <a class="logo" href="index.html">NOXAM</a>
-
     <nav>
         <a href="archive.html">ARCHIVE</a>
         <a href="#">ABOUT</a>
     </nav>
-
 </header>
 
 <main>
-
     <div class="classification">
         NoxAm / Digital Archive
     </div>
@@ -175,18 +203,22 @@
     <div class="year">2026</div>
 
     <div class="track">
+        <div class="track-left">
+            <!-- Миниатюра обложки со ссылкой на релиз -->
+            <a href="pyanyj-vecher.html">
+                <img class="track-thumb" src="Oblozhka PianVech.webp" alt="Обложка трека Пьяный вечер" loading="lazy">
+            </a>
 
-        <div class="track-info">
-            <h2>Пьяный вечер</h2>
-            <p>Original song / Lyrics & melody by Roman Popov</p>
+            <div class="track-info">
+                <h2>Пьяный вечер</h2>
+                <p>Original song / Lyrics & melody by Roman Popov</p>
+            </div>
         </div>
 
         <a class="open" href="pyanyj-vecher.html">
             OPEN →
         </a>
-
     </div>
-
 </main>
 
 <footer>

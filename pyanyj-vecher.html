@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Пьяный вечер — NoxAm Archive</title>
-    <meta name="description" content="Текст и история создания песни «Пьяный вечер» проекта NoxAm. Автор слов и музыки: Роман Попов.">
+    <title>Пьяный вечер — NoxAm</title>
+    <meta name="description" content="Текст песни, история создания и клип на трек «Пьяный вечер» проекта NoxAm. Автор: Роман Попов.">
 
     <style>
         * {
@@ -90,7 +90,7 @@
         .metadata-box {
             border-left: 2px solid #e5a84b;
             padding-left: 18px;
-            margin: 30px 0 40px 0;
+            margin: 25px 0 35px 0;
             color: #8b9f9e;
             font-size: 14px;
         }
@@ -103,10 +103,60 @@
             color: #dce8e7;
         }
 
-        .section-title {
-            margin: 40px 0 20px 0;
+        /* Кнопки стримингов */
+        .listen-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 30px 0 40px 0;
+        }
+
+        .listen-btn {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(114, 201, 196, 0.08);
             color: #72c9c4;
-            font-size: 16px;
+            border: 1px solid rgba(114, 201, 196, 0.25);
+            padding: 10px 18px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .listen-btn:hover {
+            background: #e5a84b;
+            border-color: #e5a84b;
+            color: #071315;
+            font-weight: 500;
+        }
+
+        /* Адаптивный плеер YouTube */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 6px;
+            border: 1px solid rgba(74, 180, 177, 0.2);
+            margin: 25px 0 45px 0;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .section-title {
+            margin: 45px 0 18px 0;
+            color: #72c9c4;
+            font-size: 15px;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -161,7 +211,7 @@
     <a class="logo" href="index.html">NOXAM</a>
     <nav>
         <a href="archive.html">ARCHIVE</a>
-        <a href="#">ABOUT</a>
+        <a href="about.html">ABOUT</a>
     </nav>
 </header>
 
@@ -171,18 +221,40 @@
     <div class="classification">NoxAm / Track File</div>
     <h1>Пьяный вечер</h1>
 
+    <!-- 1. БЛОК АВТОРСТВА -->
     <div class="metadata-box">
         <p><strong>Проект:</strong> NoxAm</p>
-        <p><strong>Музыка и слова:</strong> Роман Попов</p>
+        <p><strong>Автор музыки и слов:</strong> Роман Попов</p>
+        <p><strong>Гитарные партии:</strong> Роман Попов</p>
+        <p><strong>Вокал и аранжировка:</strong> AI assisted</p>
         <p><strong>Год релиза:</strong> 2026</p>
-        <p><strong>Формат:</strong> Авторская музыка + AI вокал</p>
     </div>
 
+    <!-- 2. ССЫЛКИ НА СТРИМИНГИ -->
+    <div class="section-title">Слушать релиз</div>
+    <div class="listen-buttons">
+        <!-- Замени ссылку в href="..." на свою или добавь новые кнопки -->
+        <a class="listen-btn" href="https://music.yandex.ru" target="_blank" rel="noopener">Яндекс Музыка ↗</a>
+        <a class="listen-btn" href="https://open.spotify.com" target="_blank" rel="noopener">Spotify ↗</a>
+        <a class="listen-btn" href="https://music.apple.com" target="_blank" rel="noopener">Apple Music ↗</a>
+        <a class="listen-btn" href="https://bandcamp.com" target="_blank" rel="noopener">Bandcamp ↗</a>
+    </div>
+
+    <!-- 3. БЛОК ЮТУБ (КЛИП / ВИДЕО) -->
+    <div class="section-title">Видео / Клип</div>
+    <div class="video-container">
+        <!-- Чтобы вставить свое видео, замени XXXXXX на ID твоего ролика с YouTube -->
+        <!-- Например, если ссылка https://www.youtube.com/watch?v=dQw4w9WgXcQ, то вставляем dQw4w9WgXcQ -->
+        <iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ" title="NoxAm Video" allowfullscreen></iframe>
+    </div>
+
+    <!-- 4. ТЕКСТ ПЕСНИ -->
     <div class="section-title">Текст песни</div>
     <div class="lyrics">
-Здесь вставь полный текст песни «Пьяный вечер».
-Каждая строчка будет отображаться ровно так, как ты её напишешь.
-С пробелами между куплетами и припевами.
+Здесь будет текст песни «Пьяный вечер».
+
+Каждый куплет и припев разделяй обычной пустой строкой.
+Никаких специальных тегов писать не нужно — текст отобразится ровно так, как ты его вставишь.
     </div>
 </main>
 

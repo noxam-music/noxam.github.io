@@ -132,7 +132,7 @@
             width: 100%;
             max-width: 380px;
             height: auto;
-            opacity: 0.9; /* полупрозрачный, стильный вид */
+            opacity: 0.4; /* стильный прозрачный знак */
             filter: drop-shadow(0 0 35px rgba(114, 201, 196, 0.15));
             transition: opacity 0.3s ease, transform 0.3s ease;
             user-select: none;
@@ -241,6 +241,115 @@
             font-size: 12px;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Кликабельное имя в футере */
+        .footer-author-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            color: #627473;
+            font-family: inherit;
+            font-size: 12px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-author-btn:hover {
+            color: #72c9c4;
+        }
+
+        /* Затемнение фона для модалки */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(6px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        /* Карточка контактов */
+        .modal-window {
+            background: #060d0e;
+            border: 1px solid rgba(114, 201, 196, 0.3);
+            border-radius: 8px;
+            max-width: 420px;
+            width: 100%;
+            padding: 32px;
+            position: relative;
+            box-shadow: 0 0 35px rgba(0, 0, 0, 0.95), 0 0 20px rgba(114, 201, 196, 0.12);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            background: none;
+            border: none;
+            color: #8b9f9e;
+            font-size: 24px;
+            line-height: 1;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: #e5a84b;
+        }
+
+        .modal-tag {
+            color: #e5a84b;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .modal-window h3 {
+            margin: 0 0 14px 0;
+            color: #e4eeee;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .modal-window p {
+            color: #9eb0af;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0 0 20px 0;
+        }
+
+        .modal-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .modal-links a {
+            color: #72c9c4;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 1px;
+            padding: 10px 14px;
+            border: 1px solid rgba(114, 201, 196, 0.25);
+            border-radius: 4px;
+            background: rgba(114, 201, 196, 0.04);
+            transition: all 0.2s ease;
+        }
+
+        .modal-links a:hover {
+            background: rgba(114, 201, 196, 0.12);
+            border-color: #e5a84b;
+            color: #e5a84b;
         }
 
         @media (max-width: 850px) {
@@ -258,7 +367,7 @@
 
             .hero-logo {
                 max-width: 220px;
-                opacity: 0.18;
+                opacity: 0.3;
             }
 
             .latest-card {
@@ -290,6 +399,7 @@
                 padding: 18px 6vw;
                 flex-direction: column;
                 gap: 12px;
+                align-items: flex-start;
             }
         }
     </style>
@@ -330,7 +440,6 @@
             </div>
 
             <div class="hero-visual">
-                <!-- Большой фоновый логотип (замени images/logo.webp при необходимости) -->
                 <img class="hero-logo" src="images/logo.png" alt="NoxAm Symbol">
             </div>
         </section>
@@ -349,7 +458,6 @@
                 </div>
 
                 <div class="latest-actions">
-                    <!-- Замени ссылку в href на прямой трек в YouTube Music -->
                     <a class="btn-ytm" href="https://music.youtube.com/watch?v=yzzg8P1BvsY" target="_blank" rel="noopener">
                         YouTube Music ↗
                     </a>
@@ -361,12 +469,53 @@
         </section>
     </main>
 
+    <!-- ФУТЕР С КНОПКОЙ КОНТАКТОВ -->
     <footer>
-        <span>NoxAm / Roman Popov</span>
+        <button class="footer-author-btn" id="openContactModal">
+            NoxAm / Roman Popov ↗
+        </button>
         <span>Human created / AI assisted</span>
     </footer>
 
 </div>
+
+<!-- ВСПЛЫВАЮЩЕЕ ОКНО КОНТАКТОВ -->
+<div class="modal-overlay" id="contactModal">
+    <div class="modal-window">
+        <button class="modal-close" id="closeContactModal">&times;</button>
+        <div class="modal-tag">Contact / Creator</div>
+        <h3>Роман Попов</h3>
+        <p>Автор проекта NoxAm. По вопросам сотрудничества, релизов и использования музыки:</p>
+        
+        <div class="modal-links">
+            <!-- Замени почту и телеграм на свои реальные контакты -->
+            <a href="mailto:твой-email@gmail.com">Email: твой-email@gmail.com ↗</a>
+            <a href="https://t.me/твой_ник" target="_blank" rel="noopener">Telegram ↗</a>
+        </div>
+    </div>
+</div>
+
+<!-- СКРИПТ ОТКРЫТИЯ / ЗАКРЫТИЯ -->
+<script>
+    const modal = document.getElementById('contactModal');
+    const openBtn = document.getElementById('openContactModal');
+    const closeBtn = document.getElementById('closeContactModal');
+
+    openBtn.addEventListener('click', () => {
+        modal.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // Закрытие при клике мимо карточки в темную область
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+</script>
 
 </body>
 </html>
